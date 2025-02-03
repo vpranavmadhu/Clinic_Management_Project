@@ -1,0 +1,40 @@
+{% extends 'admin/adminindex.html' %}
+
+{% block body %}
+
+
+
+<body>
+<form id="form1" name="form1" method="post" action="/com_search#about">
+  <table   class="table table-bordered table-dark">
+    <tr>
+      <td width="29"><label>Date</label></td>
+      <td width="144" colspan="2"><label>
+        <input type="date" name="textfield" value="{{ dt }}" class="form-control" required/>
+      </label>
+
+        <input type="submit" name="Submit" value="Search" class="btn btn-warning" required />
+      </td><td></td>
+    </tr>
+    <tr>
+      <th>PATIENT</th>
+      <th>COMPLAINTS</th>
+      <th>DATE</th>
+      <th>REPLY</th>
+    </tr>
+      {% for i in val %}
+    <tr>
+      <td>{{ i.USER.firstname }} {{ i.USER.lasttname }}</td>
+      <td>&nbsp;{{ i.complaint }}</td>
+      <td>{{ i.date }}</td>
+      <td>
+          {% if i.reply == "pending" %}
+              <label><a href="/reply_send/{{ i.id }}" class="btn btn-primary">Reply</a></label>{% else %}{{ i.reply }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/editreply/{{ i.id }}" class="btn btn-success">Edit</a>{% endif %}
+      </td>
+
+    </tr>
+      {% endfor %}
+  </table>
+</form>
+</body>
+{% endblock %}

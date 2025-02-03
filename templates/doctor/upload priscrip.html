@@ -1,0 +1,23 @@
+{% extends 'doctor/doctorindex.html' %}
+{% block body %}
+<body>
+<form id="form1" name="form1" method="post" action="/pres_code" enctype="multipart/form-data">
+  <table   class="table table-dark table-striped">
+    <tr>
+      <td><label>Prescription</label></td>
+      <td><label>
+      </label></td>
+
+      <td><textarea name="txt"></textarea><br>
+          <input type="file" name="fl" /></td></td>
+    </tr>
+    <tr>
+      <td colspan="3"><label>
+        <input type="submit" name="Submit" value="upload" />
+      </label></td>
+    </tr>
+  </table>
+</form>
+</body>
+{% endblock %}
+

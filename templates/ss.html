@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Multiple Select with Checkbox Buttons</title>
+</head>
+<body>
+
+<select id="mySelect" multiple>
+  <option value="option1">Option 1</option>
+  <option value="option2">Option 2</option>
+  <option value="option3">Option 3</option>
+  <option value="option4">Option 4</option>
+  <option value="option5">Option 5</option>
+</select>
+
+<div id="checkboxes">
+  <!-- Checkbox buttons will be dynamically generated here -->
+</div>
+
+<script>
+// Function to handle checkbox button click
+function checkboxClicked(checkbox) {
+  var selectedOptions = [];
+  var options = document.getElementById('mySelect').options;
+
+  // Loop through options to check which are selected
+  for (var i = 0; i < options.length; i++) {
+    if (options[i].selected) {
+      selectedOptions.push(options[i].value);
+    }
+  }
+
+  // Update checkbox button checked state based on selected options
+  checkbox.checked = selectedOptions.includes(checkbox.value);
+}
+
+// Function to initialize checkbox buttons
+function initializeCheckboxes() {
+  var selectOptions = document.getElementById('mySelect').options;
+  var checkboxesContainer = document.getElementById('checkboxes');
+
+  for (var i = 0; i < selectOptions.length; i++) {
+    var checkbox = document.createElement('input');
+    checkbox.type = 'checkbox';
+    checkbox.value = selectOptions[i].value;
+    checkbox.onclick = function() { checkboxClicked(this); };
+    checkboxesContainer.appendChild(checkbox);
+
+    var label = document.createElement('label');
+    label.innerHTML = selectOptions[i].text;
+    checkboxesContainer.appendChild(label);
+
+    checkboxesContainer.appendChild(document.createElement('br'));
+  }
+}
+
+// Call the function to initialize checkbox buttons
+initializeCheckboxes();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,25 @@
+{% extends 'doctor/doctorindex.html' %}
+
+{% block body %}
+
+<body>
+<form id="form1" name="form1" method="post" action="">
+  <table   class="table table-bordered table-dark ">
+    <tr>
+      <th><label>PATIENT</label></th>
+      <th><label>PRESCRIPTION</label></th>
+      <th><label>DATE</label></th>
+    </tr>
+      {% for i in val %}
+    <tr>
+      <td>{{ i.BOOKING.USER.firstname }} {{ i.BOOKING.lastname }}</td>
+        <td>{% if i.type == "f" %}<a href="../media/{{ i.prescription }}"  download>Download</a> {% else %}{{ i.prescription }}{% endif %}</td>
+      <td>{{ i.date }}</td>
+    </tr>
+      {% endfor %}
+      <tr><td colspan="3" align="center"><a href="/upload_priscrip">Add New</a></td></tr>
+  </table>
+</form>
+</body>
+{% endblock %}
+

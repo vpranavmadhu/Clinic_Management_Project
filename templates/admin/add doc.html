@@ -1,0 +1,156 @@
+{% extends 'admin/adminindex.html' %}
+{% block body %}
+    <head>
+{#   <script>#}
+{#        document.getElementById('options').addEventListener('change', function () {#}
+{#            var selectBox = this;#}
+{#            var checkboxesDiv = document.getElementById('checkboxes');#}
+{#            checkboxesDiv.innerHTML = '';#}
+{##}
+{#            for (var i = 0; i < selectBox.selectedOptions.length; i++) {#}
+{#                var option = selectBox.selectedOptions[i];#}
+{#                var checkbox = document.createElement('input');#}
+{#                checkbox.type = 'checkbox';#}
+{#                checkbox.name = 'options';#}
+{#                checkbox.value = option.value;#}
+{#                checkbox.checked = true; // You can set this to true or false depending on your requirement#}
+{#                checkboxesDiv.appendChild(checkbox);#}
+{#                checkboxesDiv.appendChild(document.createTextNode(option.text));#}
+{#                checkboxesDiv.appendChild(document.createElement('br'));#}
+{#            }#}
+{#        });#}
+{#    </script>#}
+    </head>
+<body>
+<form id="form1" name="form1" method="post" action="add_doc_post" enctype="multipart/form-data">
+  <table  class="table table-bordered table-dark">
+    <tr>
+      <td><label>First name</label></td>
+      <td><label>
+        <input type="text" name="textfield" class="form-control" required pattern="[A-Z a-z.]{3,25}" title=" between 3 and 50 alphabets" value="Dr."/>
+      </label></td>
+    </tr>
+    <tr>
+      <td><label>Last name</label></td>
+      <td><label>
+        <input type="text" name="textfield2" class="form-control" required pattern="[A-Z a-z]{1,25}" title="between 1 and 50 alphabets"/>
+      </label></td>
+    </tr>
+    <tr>
+      <td><label>DOB</label></td>
+      <td><label>
+        <input type="date" name="textfield3" class="form-control"  min="1990-01-01" max="2019-12-31" required/>
+      </label></td>
+    </tr>
+    <tr>
+      <td><label>Gender</label></td>
+      <td>
+        <input name="radiobutton" type="radio" value="Male" checked/>
+      Male 
+      <input name="radiobutton" type="radio" value="Female" />
+      Female
+          <input name="radiobutton" type="radio" value="Other" />
+      Other
+     
+    </tr>
+    <tr>
+      <td><label>Photo</label></td>
+      <td><label>
+        <input type="file" name="f" class="form-control" required/>
+      </label></td>
+    </tr>  <tr>
+      <td><label>Specilization</label></td>
+      <td><label>
+   <select name="textfield4" id="options" multiple>
+            <option value="Consultant Ophthalmologist">Consultant Ophthalmologist</option>
+            <option value="Pediatric Opthalmologist">Pediatric Ophthalmologist</option>
+            <option value="Squint">Squint</option>
+            <option value="Retina Surgeon">Retina Surgeon</option>
+            <option value="CMO Surgeon">CMO Surgeon</option>
+            <option value="Cornea Surgeon">Cornea Surgeon</option>
+            <option value="Consultant Retina">Consultant Retina</option>
+            <option value="Medical Retina">Medical Retina</option>
+            <option value="Cornea & Lasic">Cornea & Lasic</option>
+            <option value="Anaesthetist">Anaesthetist</option>
+            <option value="Phaco Surgeon">Phaco Surgeon</option>
+            <option value="ICL Surgeon">ICL Surgeon</option>
+
+        </select>
+        <div id="checkboxes"></div>
+       {#   <input type="text" name="textfield4" class="form-control" required pattern="[A-Z a-z.]{3,25}" title=" Must contain atleast 3 and alphabets only"/>#}
+      </label></td>
+    </tr>
+    <tr>
+      <td><label>Qualification</label></td>
+      <td><label>
+  <select name="textfield5" id="options" multiple>
+            <option value="MBBS">MBBS</option>
+            <option value="DO">DO</option>
+            <option value="MS(Ophthal)">MS(Ophthal)</option>
+            <option value="MS">MS</option>
+            <option value="DND">DND</option>
+            <option value="FMRF">FMRF</option>
+            <option value="DNB">DNB</option>
+            <option value="DNB(Opthal)">DNB(Ophthal)</option>
+            <option value="DOMS">DOMS</option>
+            <option value="MNAMS">MNAMS</option>
+            <option value="FAGE">FAGE</option>
+        </select>
+        <div id="checkboxes"></div>
+          {#        <input type="text" name="textfield5" class="form-control" required pattern="[A-Z a-z | ,]{3,25}" title="Must contain atleast 3 and alphabets only"/>#}
+      </label></td>
+    </tr>
+    <tr>
+      <td><label>Place</label></td>
+      <td><label>
+        <input type="text" name="place" class="form-control" required pattern="[A-Z a-z.]{3,50}" title="between 3 and 50 alphabets"/>
+      </label></td>
+    </tr>
+    <tr>
+      <td><label>Post</label></td>
+      <td><label>
+        <input type="text" name="post" class="form-control" required pattern="[A-Z a-z.]{3,50}" title="between 3 and 50 alphabets"/>
+      </label></td>
+    </tr>
+    <tr>
+      <td><label>Pin</label></td>
+      <td><label>
+        <input type="text" name="pin" class="form-control" required pattern="[0-9]{6}" title="Enter exactly 6 digits for a standard pincode"/>
+      </label></td>
+    </tr>
+    <tr>
+      <td><label>Email</label></td>
+      <td ><label>
+        <input type="email" name="textfield6" class="form-control" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}"  value="@gmail.com" title="Enter a valid email"/>
+      </label></td>
+    </tr>
+    <tr>
+      <td><label>Phone</label></td>
+      <td><label>
+        <input type="text" name="textfield7" class="form-control" required pattern="[0-9]{10}" title="enter a valid  10 digit phone number"/>
+      </label></td>
+    </tr>
+    <tr>
+      <td><label>User name</label></td>
+      <td><label>
+        <input type="text" name="textfield8" class="form-control"  required pattern="[a-z 0-9 A-Z]{4,25}" title="between 3 and 25 characters "/>
+      </label></td>
+    </tr>
+    <tr>
+      <td><label>Password</label></td>
+      <td><label>
+        <input type="text" name="textfield9" class="form-control" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"/>
+      </label></td>
+    </tr>
+    <tr>
+      <td colspan="2" align="center"><label>
+        <input type="submit" name="Submit" value="Add" class="btn btn-info"/>
+      </label></td>
+    </tr>
+  </table>
+</form>
+</body>
+
+
+
+{% endblock %}

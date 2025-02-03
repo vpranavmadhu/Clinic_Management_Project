@@ -1,0 +1,125 @@
+j{% extends 'admin/adminindex.html' %}
+
+{% block body %}
+
+
+<body>
+<form id="form1" name="form1" method="post" action="/edit_doc_post" enctype="multipart/form-data">
+  <table   class="table table-bordered table-dark ">
+    <tr>
+      <td><label>First name</label></td>
+      <td><label>
+        <input type="text" name="textfield" value="{{ val.firstname }}" required pattern="[A-Z a-z.]{3,25}" title="Must contain atleast 3 characters"/>
+      </label></td>
+    </tr>
+    <tr>
+      <td><label>Last name</label></td>
+      <td><label>
+        <input type="text" name="textfield2" value="{{ val.lastname}}"required pattern="[A-Z a-z]{1,25}" title="Must contain atleast 1 characters"/>
+      </label></td>
+    </tr>
+    <tr>
+      <td><label>DOB</label></td>
+      <td><label>
+        <input type="date" name="textfield3" value="{{ date}}"/>
+      </label></td>
+    </tr>
+    <tr>
+      <td><label>Gender</label></td>
+      <td>
+        <input name="radiobutton" type="radio" value="Male" {% if val.gender == "Male" %} checked {% endif %}/>
+      Male
+      <input name="radiobutton" type="radio" value="Female" {% if val.gender == "Female" %} checked {% endif %}/>
+      Female
+      <input name="radiobutton" type="radio" value="Other" {% if val.gender == "Other" %} checked {% endif %}>
+      Other
+    </tr>
+    <tr>
+      <td><label>Photo</label></td>
+      <td><label>
+          <img src="{{ val.photo.url }}" height="100" width="100">
+        <input type="file" name="f" />
+      </label></td>
+    </tr>  <tr>
+      <td><label>Specilization</label></td>
+      <td><label>
+   <select name="textfield4" id="options" multiple>
+            <option value="Consultant Ophthalmologist">Consultant Ophthalmologist</option>
+            <option value="Pediatric Opthalmologist">Pediatric Ophthalmologist</option>
+            <option value="Squint">Squint</option>
+            <option value="Retina Surgeon">Retina Surgeon</option>
+            <option value="CMO Surgeon">CMO Surgeon</option>
+            <option value="Cornea Surgeon">Cornea Surgeon</option>
+            <option value="Consultant Retina">Consultant Retina</option>
+            <option value="Medical Retina">Medical Retina</option>
+            <option value="Cornea & Lasic">Cornea & Lasic</option>
+            <option value="Anaesthetist">Anaesthetist</option>
+            <option value="Phaco Surgeon">Phaco Surgeon</option>
+            <option value="ICL Surgeon">ICL Surgeon</option>
+
+        </select>
+        <div id="checkboxes"></div>
+
+        {#    <input type="text" name="textfield4" value="{{ val.specilization}}"required pattern="[A-Z a-z.|]{3,25}" title=" Must contain atleast 3 characters"\> #}
+      </label></td>
+    </tr>
+    <tr>
+      <td><label>Qualification</label></td>
+      <td><label>
+   <select name="textfield5" id="options" multiple>
+            <option value="MBBS">MBBS</option>
+            <option value="DO">DO</option>
+            <option value="MS(Ophthal)">MS(Ophthal)</option>
+            <option value="MS">MS</option>
+            <option value="DND">DND</option>
+            <option value="FMRF">FMRF</option>
+            <option value="DNB">DNB</option>
+            <option value="DNB(Opthal)">DNB(Ophthal)</option>
+            <option value="DOMS">DOMS</option>
+            <option value="MNAMS">MNAMS</option>
+            <option value="FAGE">FAGE</option>
+        </select>
+        <div id="checkboxes"></div>
+        {#     <input type="text" name="textfield5" value="{{ val.qualification}}" required pattern="[A-Z a-z | ,]{3,25}" title="Must contain atleast 3 characters"/> #}
+      </label></td>
+    </tr>
+    <tr>
+      <td><label>Place</label></td>
+      <td><label>
+        <input type="text" name="place" value="{{ val.place}}" required pattern="[A-Z a-z.]{3,25}" title=" Must contain atleast 3 characters"/>
+      </label></td>
+    </tr>
+    <tr>
+      <td><label>Post</label></td>
+      <td><label>
+        <input type="text" name="post" value="{{ val.post}}" required pattern="[A-Z a-z.]{3,25}" title="Must contain atleast 3 characters"/>
+      </label></td>
+    </tr>
+    <tr>
+      <td><label>Pin</label></td>
+      <td><label>
+        <input type="text" name="pin" value="{{ val.pin}}" required pattern="[0-9]{6}" title="Must contain  6 digits"/>
+      </label></td>
+    </tr>
+    <tr>
+      <td><label>Email</label></td>
+      <td><label>
+        <input type="text" name="textfield6" value="{{ val.email}}" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}" title="enter valid email"/>
+      </label></td>
+    </tr>
+    <tr>
+      <td><label>Phone</label></td>
+      <td><label>
+        <input type="text" name="textfield7"value="{{ val.phone}}" required pattern="[0-9]{10}" title="enter a 10 digit phone number" />
+      </label></td>
+    </tr>
+
+    <tr>
+      <td colspan="2"><label>
+        <input type="submit" name="Submit" value="Update" class="btn btn-info"/>
+      </label></td>
+    </tr>
+  </table>
+</form>
+</body>
+{% endblock %}

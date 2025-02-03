@@ -1,0 +1,33 @@
+{% extends 'admin/adminindex.html' %}
+
+{% block body %}
+
+
+
+<body>
+<form id="form1" name="form1" method="post" action="">
+  <table width="200" border="1">
+    <tr>
+      <td><a href="/manage_doctor">Manage doctor</a></td>
+    </tr>
+      <tr>
+      <td><a href="/pharma_reg">Add pharmacy</a></td>
+    </tr>
+
+    <tr>
+      <td><a href="/booking_details">View booking details</a></td>
+    </tr>
+    <tr>
+      <td><a href="/view_comp_and_reply">View complaint reply</a></td>
+    </tr>
+    <tr>
+      <td><a href="/feedback_ad">Feedback</a></td>
+    </tr>
+    <tr>
+      <td><label><a href="/">Logout</a></label></td>
+    </tr>
+  </table>
+</form>
+</body>
+{% endblock %}
+

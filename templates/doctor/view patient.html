@@ -1,0 +1,40 @@
+{% extends 'doctor/doctorindex.html' %}
+{% block body %}
+
+<body>
+<form id="form1" name="form1" method="post" action="view_patient_search#about">
+  <table   class="table table-bordered table-dark">
+    <tr>
+      <td><label>date</label></td>
+      <td><label>
+        <input type="date" name="textfield" class="form-control" required value="{{ d }}"/>
+      </label></td>
+      <td><label>
+        <input type="submit" name="Submit" value="Search" class="btn btn-warning" required/>
+      </label></td>
+      <td>&nbsp;</td><td></td><td></td>
+    </tr>
+    <tr>
+      <th><label>PATIENT</label></th>
+      <th><label>SLOT</label></th>
+      <th><label>SCHEDULE DATE</label></th>
+      <th><label>BOOKING DATE</label></th>
+      <th><label>STATUS</label></th>
+      <th>&nbsp;</th>
+    </tr>
+
+      {% for i in val %}
+    <tr>
+      <td>&nbsp;{{ i.USER.firstname }}{{ i.USER.lastname }}</td>
+      <td>&nbsp;{{ i.sloat }} </td>
+      <td>&nbsp;{{ i.SHEDULE.date }}</td>
+      <td>&nbsp;{{ i.date }}</td>
+      <td>&nbsp;{{ i.bstatus }}</td>
+      <td><a href="/view_prescription_doc/{{ i.id }}">Prescription</a></td>
+    </tr>
+      {% endfor  %}
+  </table>
+</form>
+</body>
+{% endblock %}
+
